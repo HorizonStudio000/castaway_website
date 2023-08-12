@@ -1,0 +1,121 @@
+.header {
+    padding: 25px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    backdrop-filter: blur(7.5px);
+    -webkit-backdrop-filter: blur(7.5px);
+}
+
+.header_wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.link {
+    font-family: var(--dm);
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 27px;
+    color: var(--w);
+    transition: 0.3s;
+}
+
+.link:hover{
+    color: var(--wb);
+}
+
+.header_burger-btn {
+    display: none;
+}
+
+.header_overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+}
+
+.open .header_overlay {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+@media screen and (max-width:600px){
+    .header_burger-btn {
+        display: block;
+        position: fixed;
+        top: 26px;
+        right: 6px;
+        height: 40px;
+        width: 40px;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        transition: all .5s;
+        z-index: 160;
+    }
+
+    .header_burger-btn span {
+        position: absolute;
+        width: 30px;
+        height: 3px;
+        background: var(--wb);
+        left: 5px;
+        transition: all .5s;
+    }
+
+    .header_burger-btn span:nth-child(1) {
+        transform: translateY(-10px);
+    }
+
+    .header_burger-btn span:nth-child(3) {
+        transform: translateY(10px);
+    }
+
+    .header.open .header_burger-btn span:nth-child(1) {
+        transform: translateY(0) rotate(-45deg);
+    }
+
+    .header.open .header_burger-btn span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .header.open .header_burger-btn span:nth-child(3) {
+        transform: translateY(0) rotate(45deg);
+    }
+
+    .menu {
+        position: fixed;
+        right: 0;
+        top: 0;
+        width: 30%;
+        height: 100vh;
+        background: #4F4F4F;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        padding: 90px 25px 60px 25px;
+        gap: 40px;
+        transform: translateX(100%);
+        transition: all .5s;
+        z-index: 50;
+    }
+
+    .header.open .menu {
+        transform: translateX(0);
+    }
+}
